@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        PYTHON_VERSION = '3.12'
+        PYTHON_VERSION = '3.13'
         PATH = "/var/jenkins_home/.local/bin:${env.PATH}"
     }
     
