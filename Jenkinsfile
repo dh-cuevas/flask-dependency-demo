@@ -3,6 +3,7 @@ pipeline {
     
     environment {
         PYTHON_VERSION = '3.12'
+        PATH = "/var/jenkins_home/.local/bin:${env.PATH}"
     }
     
     stages {
