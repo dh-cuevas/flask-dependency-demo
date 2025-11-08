@@ -29,10 +29,10 @@ pipeline {
                 echo 'Ejecutando pruebas unitarias...'
                 script {
                     if (isUnix()) {
-                        sh 'pip install pytest'
+                        sh 'pip install --break-system-packages pytest'
                         sh 'pytest --version || echo "Pytest instalado"'
                     } else {
-                        bat 'pip install pytest'
+                        bat 'pip install --break-system-packages pytest'
                         bat 'pytest --version || echo Pytest instalado'
                     }
                 }
@@ -46,11 +46,11 @@ pipeline {
                 echo 'Analizando calidad del código...'
                 script {
                     if (isUnix()) {
-                        sh 'pip install pylint'
+                        sh 'pip install --break-system-packages pylint'
                         sh 'pylint --version || echo "Pylint instalado"'
                         sh 'pylint app.py || echo "Análisis completado con advertencias"'
                     } else {
-                        bat 'pip install pylint'
+                        bat 'pip install --break-system-packages pylint'
                         bat 'pylint --version || echo Pylint instalado'
                         bat 'pylint app.py || echo Análisis completado con advertencias'
                     }
@@ -65,12 +65,12 @@ pipeline {
                 echo 'Gestionando dependencias con pipenv...'
                 script {
                     if (isUnix()) {
-                        sh 'pip install pipenv'
+                        sh 'pip install --break-system-packages pipenv'
                         sh 'pipenv --version'
                         sh 'pipenv install --skip-lock'
                         sh 'pipenv check || echo "Verificación de seguridad completada"'
                     } else {
-                        bat 'pip install pipenv'
+                        bat 'pip install --break-system-packages pipenv'
                         bat 'pipenv --version'
                         bat 'pipenv install --skip-lock'
                         bat 'pipenv check || echo Verificación de seguridad completada'
@@ -87,10 +87,10 @@ pipeline {
                 script {
                     if (isUnix()) {
                         sh 'echo "Aplicación lista para despliegue"'
-                        sh 'pip install -r requirements.txt'
+                        sh 'pip install --break-system-packages -r requirements.txt'
                     } else {
                         bat 'echo Aplicación lista para despliegue'
-                        bat 'pip install -r requirements.txt'
+                        bat 'pip install --break-system-packages -r requirements.txt'
                     }
                 }
                 echo 'Deploy completado exitosamente'
